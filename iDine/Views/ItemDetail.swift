@@ -10,10 +10,11 @@ import SwiftUI
 
 struct ItemDetail: View {
     
+    @EnvironmentObject var order: Order
     var item: MenuItem
     
     var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             ZStack(alignment: .bottomTrailing) {
                 Image(item.mainImage)
                 Text("Photo: \(item.photoCredit)")
@@ -24,8 +25,13 @@ struct ItemDetail: View {
                     .offset(x: -25, y: -5)
             }
             Text(item.description)
-                .padding(.leading, 30)
-                .padding(.trailing, 30)
+                .font(.callout)
+                .padding(30)
+            
+            Button(action: { self.order.add(item: self.item) }) {
+                Text("Order This")
+            }.font(.headline)
+            
             Spacer()
         }
         .navigationBarTitle(Text(item.name), displayMode: .inline)
@@ -33,9 +39,12 @@ struct ItemDetail: View {
 }
 
 struct ItemDetail_Previews: PreviewProvider {
+    
+    static let order = Order()
+    
     static var previews: some View {
         NavigationView {
-            ItemDetail(item: MenuItem.example)
+            ItemDetail(item: MenuItem.example).environmentObject(order)
         }
     }
 }
