@@ -21,6 +21,7 @@
 		7B91665723628FFD0059F2B9 /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91665623628FFD0059F2B9 /* ItemDetail.swift */; };
 		7B91665923629CFF0059F2B9 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91665823629CFF0059F2B9 /* OrderView.swift */; };
 		7B91665B2362A1490059F2B9 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91665A2362A1490059F2B9 /* AppView.swift */; };
+		7B91665D2362A76B0059F2B9 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B91665C2362A76B0059F2B9 /* CheckoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		7B91665623628FFD0059F2B9 /* ItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetail.swift; sourceTree = "<group>"; };
 		7B91665823629CFF0059F2B9 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		7B91665A2362A1490059F2B9 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		7B91665C2362A76B0059F2B9 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 				7B91665623628FFD0059F2B9 /* ItemDetail.swift */,
 				7B91665823629CFF0059F2B9 /* OrderView.swift */,
 				7B91665A2362A1490059F2B9 /* AppView.swift */,
+				7B91665C2362A76B0059F2B9 /* CheckoutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B91665323627D320059F2B9 /* Order.swift in Sources */,
+				7B91665D2362A76B0059F2B9 /* CheckoutView.swift in Sources */,
 				7B91663623627C5B0059F2B9 /* AppDelegate.swift in Sources */,
 				7B91663823627C5B0059F2B9 /* SceneDelegate.swift in Sources */,
 				7B916655236285A60059F2B9 /* ItemRow.swift in Sources */,
