@@ -12,9 +12,11 @@ struct CheckoutView: View {
     
     @EnvironmentObject var order: Order
     static let paymentTypes = ["Cash", "Credit Card", "iDine Points"]
+    static let pickupTimes = ["Now", "Tonight", "Tomorrow Morning"]
     static let tipAmounts = [10, 15, 20, 25, 0]
     
-    @State private var paymentType = 0
+    @State private var paymentTypeIndex = 0
+    @State private var pickupTimeIndex = 0
     @State private var addLoyaltyDeails = false
     @State private var loyaltyNumber = ""
     @State private var tipAmountIndex = 0
@@ -29,9 +31,15 @@ struct CheckoutView: View {
     var body: some View {
         Form {
             Section {
-                Picker(selection: $paymentType, label: Text("How do you want to pay?")) {
+                Picker(selection: $paymentTypeIndex, label: Text("How do you want to pay?")) {
                     ForEach(0 ..< Self.paymentTypes.count) {
                         Text(Self.paymentTypes[$0])
+                    }
+                }
+                
+                Picker(selection: $pickupTimeIndex, label: Text("Pickup Time")) {
+                    ForEach(0 ..< Self.pickupTimes.count) {
+                        Text(Self.pickupTimes[$0])
                     }
                 }
             }
@@ -52,7 +60,7 @@ struct CheckoutView: View {
                 }.pickerStyle(SegmentedPickerStyle())
             }
             
-            Section(header: Text("TOTAL: $\(totalPrice, specifier: "%.2f")")) {
+            Section(header: Text("TOTAL: $\(totalPrice, specifier: "%.2f")").font(.largeTitle)) {
                 HStack {
                     Spacer()
                     Button("Confirm order") {

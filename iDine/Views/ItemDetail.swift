@@ -11,7 +11,15 @@ import SwiftUI
 struct ItemDetail: View {
     
     @EnvironmentObject var order: Order
+    @EnvironmentObject var favorite: Favorite
+    @State private var isFavorite: Bool
+    
     var item: MenuItem
+    
+    init(isFavorite: Bool = false, item: MenuItem) {
+        _isFavorite = State(initialValue: isFavorite)
+        self.item = item
+    }
     
     var body: some View {
         VStack(spacing: 10) {
@@ -30,11 +38,36 @@ struct ItemDetail: View {
             
             Button(action: { self.order.add(item: self.item) }) {
                 Text("Order This")
-            }.font(.headline)
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundColor(.white)
+            }
+            .frame(width: 100, height: 30)
+            .padding(1)
+            .background(Color("order-button"))
+            .cornerRadius(25)
+            .shadow(radius: 3)
+            
             
             Spacer()
         }
         .navigationBarTitle(Text(item.name), displayMode: .inline)
+        .navigationBarItems(
+            trailing: Button(action: {
+                self.isFavorite.toggle()
+                self.addToFavorite()
+            }) {
+                Image(systemName: isFavorite ? "heart.fill" : "heart")
+            }
+        )
+    }
+    
+    func addToFavorite() {
+        if !self.favorite.isItemFavorite(item: self.item) {
+            self.favorite.addToFavorites(item: self.item)
+        } else {
+            self.favorite.removeFromFavorites(item: self.item)
+        }
     }
 }
 

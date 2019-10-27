@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct AppView: View {
+    
+    @EnvironmentObject var favorite: Favorite
+    
     var body: some View {
         TabView {
             ContentView()
@@ -22,6 +25,12 @@ struct AppView: View {
                     Image(systemName: "square.and.pencil")
                     Text("Order")
             }
+            
+            FavoriteView(favorites: favorite.getAllFavorites())
+                .tabItem {
+                    Image(systemName: "heart.circle")
+                    Text("Favorites")
+            }
         }
     }
 }
@@ -29,8 +38,9 @@ struct AppView: View {
 struct AppView_Previews: PreviewProvider {
     
     static let order = Order()
+    static let favorite = Favorite()
     
     static var previews: some View {
-        AppView().environmentObject(order)
+        AppView().environmentObject(order).environmentObject(favorite)
     }
 }
